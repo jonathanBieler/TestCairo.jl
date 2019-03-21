@@ -1,7 +1,8 @@
 using TestCairo, Homebrew, Libdl
 
 @info "installing cairo"
-Homebrew.brew(`install cairo`)
+Homebrew.add("cairo")
+#Homebrew.brew(`install cairo`)
 @info "done installing cairo"
 
 @show readdir( joinpath( Homebrew.prefix(), "Cellar/cairo/1.16.0/lib/") )

@@ -1,9 +1,6 @@
 matrix:
     include:
        - language: julia
-         julia: 0.7
-         os: osx
-       - language: julia
          julia: 1.0
          os: osx
 notifications:

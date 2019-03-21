@@ -2,6 +2,7 @@ using TestCairo, Homebrew, Libdl, Test
 
 @info "installing cairo"
 Homebrew.add("cairo")
+Homebrew.add("pango")
 #Homebrew.brew(`install cairo`)
 @info "done installing cairo"
 

@@ -17,6 +17,12 @@ const _jl_libcairo = joinpath( Homebrew.prefix(), "Cellar/cairo/1.16.0/lib/","li
     end
 end
 
-@show h = Libdl.dlopen_e(_jl_libcairo, Libdl.RTLD_LAZY)
+h = Libdl.dlopen_e(_jl_libcairo, Libdl.RTLD_LAZY)
 @show libcairo_version = VersionNumber(unsafe_string(ccall((:cairo_version_string,_jl_libcairo),Cstring,()) ))
+
+f = Libdl.dlsym_e(_jl_libcairo, "cairo_version")
+f == C_NULL && return false
+v = ccall(f, Int32,())
+@show v > 10800
+
 

@@ -20,9 +20,7 @@ end
 h = Libdl.dlopen_e(_jl_libcairo, Libdl.RTLD_LAZY)
 @show libcairo_version = VersionNumber(unsafe_string(ccall((:cairo_version_string,_jl_libcairo),Cstring,()) ))
 
-f = Libdl.dlsym_e(_jl_libcairo, "cairo_version")
+f = Libdl.dlsym_e(h, "cairo_version")
 f == C_NULL && return false
 v = ccall(f, Int32,())
-@show v > 10800
-
-
+@test v > 10800

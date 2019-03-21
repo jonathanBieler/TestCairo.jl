@@ -29,3 +29,23 @@ end
     @test v > 10800
 
 end
+
+@show readdir( joinpath( Homebrew.prefix(), "Cellar/pango/1.42.4_1/lib") )
+
+const _jl_libpango = joinpath( Homebrew.prefix(), "Cellar/pango/1.42.4_1/lib","libpango-1.0.dylib" )
+
+@testset "opening pango dylib" begin
+    for lib in ["libpangocairo-1.0.0.dylib", "libpango-1.0.0.dylib", "libpango-1.0.dylib ", "libpangoft2-1.0.0.dylib","libpangoft2-1.0.dylib"]
+        l = joinpath( Homebrew.prefix(), "Cellar/pango/1.42.4_1/lib", lib )
+        h = Libdl.dlopen_e(l, Libdl.RTLD_LAZY)
+        @test h != C_NULL
+    end
+end
+
+h = Libdl.dlopen_e(_jl_libpango, Libdl.RTLD_LAZY)
+@show VersionNumber(unsafe_string(ccall((:pango_version_string,_jl_libcairo),Cstring,()) )) 
+
+@testset "pango version" begin
+
+
+end

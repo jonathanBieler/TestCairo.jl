@@ -35,9 +35,10 @@ end
 const _jl_libpango = joinpath( Homebrew.prefix(), "Cellar/pango/1.42.4_1/lib","libpango-1.0.dylib" )
 
 @testset "opening pango dylib" begin
-    for lib in ["libpangocairo-1.0.0.dylib", "libpango-1.0.0.dylib", "libpango-1.0.dylib ", "libpangoft2-1.0.0.dylib","libpangoft2-1.0.dylib"]
+    for lib in ["libpangocairo-1.0.0.dylib", "libpango-1.0.0.dylib", "libpango-1.0.dylib", "libpangoft2-1.0.0.dylib","libpangoft2-1.0.dylib"]
         l = joinpath( Homebrew.prefix(), "Cellar/pango/1.42.4_1/lib", lib )
         h = Libdl.dlopen_e(l, Libdl.RTLD_LAZY)
+        h == C_NULL && @info l
         @test h != C_NULL
     end
 end

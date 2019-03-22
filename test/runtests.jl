@@ -44,7 +44,7 @@ const _jl_libpango = joinpath( Homebrew.prefix(), "Cellar/pango/1.42.4_1/lib","l
 end
 
 h = Libdl.dlopen_e(_jl_libpango, Libdl.RTLD_LAZY)
-@show VersionNumber(unsafe_string(ccall((:pango_version_string,_jl_libcairo),Cstring,()) )) 
+@show VersionNumber(unsafe_string(ccall((:pango_version_string,_jl_libpango),Cstring,()) )) 
 
 @testset "pango version" begin
 

@@ -2,16 +2,15 @@ using TestCairo, Homebrew, Libdl, Test
 
 @info "installing cairo"
 
-Homebrew.add("glib")
-# Homebrew.add("graphite2")
-# Homebrew.add("cairo")
-# Homebrew.add("pango")
-# Homebrew.add("fontconfig")
-# Homebrew.add("libpng")
-# Homebrew.add("gettext")
-# Homebrew.add("freetype")
-# Homebrew.add("libffi")
-# Homebrew.add("pixman")
+Homebrew.add("graphite2")
+Homebrew.add("cairo")
+Homebrew.add("pango")
+Homebrew.add("fontconfig")
+Homebrew.add("libpng")
+Homebrew.add("gettext")
+Homebrew.add("freetype")
+Homebrew.add("libffi")
+Homebrew.add("pixman")
 #Homebrew.brew(`install cairo`)
 @info "done installing cairo"
 

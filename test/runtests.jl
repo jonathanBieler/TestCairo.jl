@@ -2,17 +2,34 @@ using TestCairo, Homebrew, Libdl, Test
 
 @info "installing cairo"
 
-Homebrew.add("graphite2")
-Homebrew.add("cairo")
-Homebrew.add("pango")
-Homebrew.add("fontconfig")
-Homebrew.add("libpng")
-Homebrew.add("gettext")
-Homebrew.add("freetype")
-Homebrew.add("libffi")
-Homebrew.add("pixman")
+Homebrew.add("glib")
+# Homebrew.add("graphite2")
+# Homebrew.add("cairo")
+# Homebrew.add("pango")
+# Homebrew.add("fontconfig")
+# Homebrew.add("libpng")
+# Homebrew.add("gettext")
+# Homebrew.add("freetype")
+# Homebrew.add("libffi")
+# Homebrew.add("pixman")
 #Homebrew.brew(`install cairo`)
 @info "done installing cairo"
+
+@show readdir( joinpath( Homebrew.prefix(), "lib/") )
+
+@info "opening libgobject"
+    l = joinpath( Homebrew.prefix(), "lib","libgobject-2.0.dylib" )
+    @show h = Libdl.dlopen_e(l, Libdl.RTLD_LAZY)
+@info "done opening libgobject"
+
+function test_libgobject()
+    l = joinpath( Homebrew.prefix(), "lib","libgobject-2.0.dylib" )
+    h = Libdl.dlopen_e(l, Libdl.RTLD_LAZY)
+end
+
+@info "opening libgobject in function"
+@show test_libgobject()
+@info "done opening libgobject in function"
 
 @show readdir( joinpath( Homebrew.prefix(), "Cellar/cairo/1.16.0/lib/") )
 
